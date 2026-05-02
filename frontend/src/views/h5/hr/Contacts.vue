@@ -1,0 +1,70 @@
+<template>
+  <div class="hr-contacts">
+    <div v-if="loading" class="h5-loading">
+      <div v-for="i in 4" :key="i" class="skeleton-card"></div>
+    </div>
+    <div v-else-if="employees.length" class="h5-list" style="padding-bottom: 80px">
+      <div v-for="item in employees" :key="item.id" class="contact-card">
+        <div class="contact-avatar">{{ (item.name || '👤').charAt(0) }}</div>
+        <div class="contact-info">
+          <h4>{{ item.name }}</h4>
+          <span>{{ item.department || '' }} · {{ item.position || '' }}</span>
+        </div>
+      </div>
+    </div>
+    <div v-else class="h5-empty">
+      <div class="empty-icon">📇</div>
+      <div class="empty-text">暂无联系人</div>
+    </div>
+  </div>
+</template>
+
+<script setup>
+import { ref, onMounted } from 'vue';
+import { useH5Page } from '../useH5Page';
+const { fetchList, setLayout } = useH5Page();
+setLayout({ title: '员工通讯录', showBack: true, showTabbar: false });
+const loading = ref(true);
+const employees = ref([]);
+onMounted(async () => {
+  employees.value = await fetchList('employeeArchive');
+  loading.value = false;
+});
+</script>
+
+<style lang="scss" scoped>
+.contact-card {
+  display: flex;
+  gap: 12px;
+  background: #fff;
+  border-radius: 12px;
+  padding: 12px;
+  align-items: center;
+  .contact-avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: #f5f7fa;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--theme);
+    flex-shrink: 0;
+  }
+  .contact-info {
+    flex: 1;
+    h4 {
+      font-size: 14px;
+      font-weight: 600;
+      color: #333;
+      margin: 0 0 2px;
+    }
+    span {
+      font-size: 12px;
+      color: #999;
+    }
+  }
+}
+</style>

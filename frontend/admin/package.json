@@ -1,0 +1,27 @@
+{
+  "name": "ai-template-factory-admin",
+  "private": true,
+  "version": "2.0.0",
+  "type": "module",
+  "description": "AI后台模板工厂 - 后台管理系统",
+  "scripts": {
+    "dev": "vite --port 3000",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "@element-plus/icons-vue": "^2.3.1",
+    "axios": "^1.15.2",
+    "element-plus": "^2.6.3",
+    "file-saver": "^2.0.5",
+    "jszip": "^3.10.1",
+    "pinia": "^2.1.7",
+    "vue": "^3.4.21",
+    "vue-router": "^4.3.0"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-vue": "^5.0.4",
+    "sass": "^1.72.0",
+    "vite": "^5.2.8"
+  }
+}

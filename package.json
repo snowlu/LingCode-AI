@@ -1,0 +1,31 @@
+{
+  "name": "ai-template-factory",
+  "version": "2.0.0",
+  "description": "AI后台模板工厂 - 全栈动态化版本，零代码生成企业级管理系统",
+  "author": "AI Template Factory",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ai-template-factory/ai-template-factory"
+  },
+  "scripts": {
+    "dev:backend": "cd backend && npm run dev",
+    "dev:admin": "cd frontend/admin && npm run dev",
+    "dev:h5": "cd frontend/h5 && npm run dev",
+    "dev": "concurrently \"npm run dev:backend\" \"npm run dev:admin\" \"npm run dev:h5\"",
+    "build:admin": "cd frontend/admin && npm run build",
+    "build:h5": "cd frontend/h5 && npm run build",
+    "build": "npm run build:admin && npm run build:h5",
+    "start": "npm run dev",
+    "lint": "eslint . --ext .vue,.js,.jsx",
+    "lint:fix": "eslint . --ext .vue,.js,.jsx --fix",
+    "format": "prettier --write ."
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.2",
+    "eslint": "^8.57.0",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-plugin-vue": "^9.26.0",
+    "prettier": "^3.2.5"
+  }
+}
